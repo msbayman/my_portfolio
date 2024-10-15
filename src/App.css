@@ -1,0 +1,71 @@
+.main_page
+{
+    height: 100%;
+    background-color: #0f172a;
+    display:  flex;
+    justify-content: center;
+}
+
+.mid_box
+{
+    /* border: 2px solid white; */
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    width: fit-content;
+}
+
+.box_left
+{
+    width: 528px;
+
+
+}
+
+.path
+{
+    margin-left: 0.5rem ;
+}
+
+.path_nav
+{
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+}
+.nav-indicator {
+  height: 1px;
+  width: 2rem;
+  background-color: #475569;
+  transition: all 0.2s;
+}
+
+.path_nav:hover .nav-indicator{
+  width: 4rem; /* On hover, indicators will expand */
+  background-color: #e2e8f0;
+}
+.path_nav:hover .path{
+  color: #e2e8f0;
+}
+
+  
+  @media (prefers-reduced-motion: reduce) {
+    .nav-indicator {
+      transition: none; /* motion-reduce:transition-none */
+    }
+  }
+  
+
+
+.box_right
+{
+    width:  528px;
+    border: 2px solid red;
+
+}
+
+
+.white_span
+{
+  color: white;
+}

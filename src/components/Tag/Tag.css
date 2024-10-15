@@ -1,0 +1,15 @@
+.tag_div
+{
+    border-radius: 10rem;
+    padding: 5px 10px;
+    background-color: #132D46;
+    width: fit-content;
+}
+
+
+#tag_name
+{
+    color: #53d3d5;
+    font-size: 12px;
+}
+
