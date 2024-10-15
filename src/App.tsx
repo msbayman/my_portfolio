@@ -1,6 +1,5 @@
 import "./App.css";
 import Card from "./components/Card/Card";
-import Tag from "./components/Tag/Tag";
 import React from "react";
 
 function App() {
@@ -93,6 +92,7 @@ function App() {
         </div>
       </div>
     </div>
+    
   );
 }
 
