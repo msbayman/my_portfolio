@@ -1,8 +1,10 @@
 import "./App.css";
 import Card from "./components/Card/Card";
 import React from "react";
+import Tag from "./components/Tag/Tag";
 
 function App() {
+  
   return (
     <div className="main_page p">
       <div className="mid_box flex ">
@@ -54,7 +56,7 @@ function App() {
             </svg>
           </div>
         </div>
-        <div className="box_right py-28">
+        <div className="box_right overflow-auto scrollbar-hide py-28">
           <div className="my_goal pb-20">
             <p>
               Back in my days at 42 School, I dove deep into the world of coding
@@ -89,10 +91,46 @@ function App() {
           >
             <></>
           </Card>
+          <div className="my_projects pt-10">
+            <Card
+              date=""
+              title="FT_TRANSCENDENCE"
+              description="Developed a full-stack web app with real-time multiplayer games, chat system, and secure user authentication with 2FA using modern technologies like React, WebSockets, and JWT."
+            >
+              <Tag language="JavaScipte" />
+              <Tag language="React" />
+              <Tag language="TaillWind" />
+              <Tag language="Python" />
+              <Tag language="Django" />
+              <Tag language="Docker" />
+            </Card>
+            <Card
+              date=""
+              title="FT_IRC"
+              description="Studied software development with a focus on programming, systems administration, and database management. Gained practical experience in designing and developing applications, managing IT infrastructure, and solving technical problems. The program emphasized hands-on projects, coding best practices, and collaboration in software development, preparing for real-world challenges in the IT industry."
+            >
+              <Tag language="C++"></Tag>
+            </Card>
+
+            <Card
+              date=""
+              title="INCEPTION"
+              description="This project involves creating three containers using Docker to run a fully containerized web server environment. This setup includes an Nginx container for the web server, a WordPress container for the CMS, and a MariaDB container for the database. Each component operates in isolation, enhancing security, scalability, and management efficiency."
+            >
+              <Tag language="Docker"></Tag>
+            </Card>
+
+            <Card
+              date=""
+              title="MINISHELL"
+              description="This C project aims to create a simple shell program, providing a command-line interface for users to execute commands and manage processes."
+            >
+              <Tag language="C"></Tag>
+            </Card>
+          </div>
         </div>
       </div>
     </div>
-    
   );
 }
 

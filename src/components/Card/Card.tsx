@@ -16,7 +16,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ date, title, description, children }) => {
   return (
     <div>
-      <div className="main_card flex pb-2 py-5">
+      <div className="main_card flex py-6 ">
         <div className="date flex" style={{ flex: 1 }}>
           <p className='text-xs date mt-1'>{date}</p>
         </div>

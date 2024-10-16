@@ -9,5 +9,11 @@
   font-family: "Inter" , sans-serif;
   color: white;
   font-size: 16px;
-  color: #475569;
+  color: #94A3B8;
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background-color: #53d3d5;
+  color: #000000;           
 }
