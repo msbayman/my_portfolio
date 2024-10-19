@@ -1,41 +1,108 @@
-import "./App.css";
+import React, { useState, useEffect } from "react";
 import Card from "./components/Card/Card";
-import React from "react";
 import Tag from "./components/Tag/Tag";
+import "./App.css";
 
 function App() {
-  
+  const [activeSection, setActiveSection] = useState("");
+
+  // Handle scroll to detect which section is in view
+  const handleScroll = () => {
+    const sections = [
+      "about_section",
+      "experience_section",
+      "projects_section",
+    ];
+    const scrollPosition = window.scrollY;
+
+    sections.forEach((sectionId) => {
+      const section = document.getElementById(sectionId);
+
+      if (section) {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+
+        // Check if the scroll position is within the bounds of the section
+        if (
+          scrollPosition >= sectionTop - 200 && // Adjust for earlier detection
+          scrollPosition < sectionTop + sectionHeight
+        ) {
+          if (activeSection !== sectionId) {
+            setActiveSection(sectionId); // Update active section
+          }
+        }
+      }
+    });
+  };
+
+  const handleLinkClick = (sectionId: string) => {
+    setActiveSection(sectionId);
+    // Optionally, scroll the page to the section
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop,
+        behavior: "smooth", // Smooth scroll to the section
+      });
+    }
+  };
+
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeSection]); // Re-run if activeSection changes
+
   return (
     <div className="main_page p">
-      <div className="mid_box flex ">
-        <div className="box_left flex flex-col justify-between  py-8">
+      <div className="mid_box flex">
+        <div className="box_left flex flex-col justify-between py-8">
           <div className="top_left py-20 flex flex-col">
-            <div className="introduce ">
-              <div className="text-5xl text-white font-normal ">
+            <div className="introduce">
+              <div className="text-5xl text-white font-normal">
                 Msaoub Ayman
               </div>
-              <div className="text-xl mt-4  text-white font-normal ">
+              <div className="text-xl mt-4 text-white font-normal">
                 Frontend Developer
               </div>
             </div>
-            <div className="nav_page h-28 mt-14  flex flex-col justify-between">
-              <a href="#my_projects">
-                <div className="path_nav flex items-center ">
-                  <div className="nav-indicator flex  "></div>
-                  <div className="path"> About</div>
+            <div className="nav_page h-28 mt-14 flex flex-col justify-between">
+              <a
+                href="#about_section"
+                onClick={() => handleLinkClick("about_section")}
+              >
+                <div
+                  className={`path_nav flex items-center ${activeSection === "about_section" ? "active" : ""}`}
+                >
+                  <div className="nav-indicator flex "></div>
+                  <div className="path">About</div>
                 </div>
               </a>
-              <div className="path_nav flex items-center ">
-                <div className="nav-indicator flex  "></div>
-                <div className="path"> Experience</div>
-              </div>
-              <div className="path_nav flex items-center ">
-                <div className="nav-indicator flex  "></div>
-                <div className="path"> Projects</div>
-              </div>
+              <a
+                href="#experience_section"
+                onClick={() => handleLinkClick("experience_section")}
+              >
+                <div
+                  className={`path_nav flex items-center ${activeSection === "experience_section" ? "active" : ""}`}
+                >
+                  <div className="nav-indicator flex "></div>
+                  <div className="path">Experience</div>
+                </div>
+              </a>
+              <a
+                href="#projects_section"
+                onClick={() => handleLinkClick("projects_section")}
+              >
+                <div
+                  className={`path_nav flex items-center ${activeSection === "projects_section" ? "active" : ""}`}
+                >
+                  <div className="nav-indicator flex "></div>
+                  <div className="path">Projects</div>
+                </div>
+              </a>
             </div>
           </div>
-          <div className="links  h-10 flex justify-center gap-4 mb-10 ">
+          <div className="links h-10 flex justify-center gap-4 mb-10 ">
             <svg
               fill="#94A3B8"
               xmlns="http://www.w3.org/2000/svg"
@@ -61,49 +128,44 @@ function App() {
           </div>
         </div>
         <div className="box_right overflow-auto scrollbar-hide py-28">
-          <div className="my_goal pb-20">
+          <div id="about_section" className="pb-20">
             <p>
               Back in my days at 42 School, I dove deep into the world of coding
               by working on various projects that spanned across C, C++, Docker,
               Git, Bash, and Python. I later expanded my skills into{" "}
-              <span className="white_span"> web development</span>, mastering
-              Django for backend work and React for the frontend.
-            </p>
-            <br />
-            <p>
-              Fast-forward to today, and I'm passionate about building clean,
-              responsive, and accessible user interfaces. My primary focus is
-              <span className="white_span"> frontend development</span>, where I
-              love bridging the gap between design and functionality to create
-              seamless user experiences. Whether it's
-              <span className="white_span"> using React, TypeScript </span>, or
-              other cutting-edge technologies, I'm dedicated to writing clean,
-              scalable code that performs as well as it looks.
+              <span className="text-orange">JavaScript</span>, and{" "}
+              <span className="text-orange">Typescript</span>, with a heavy
+              focus on React. As a passionate frontend developer, I strive to
+              create seamless user experiences with clean, maintainable code.
             </p>
           </div>
-          <Card
-            date="2023 - PRESENT"
-            title="1337 Common Core (42 Network)"
-            description="An intensive, project-based computer science curriculum focused on C programming, algorithms, and data structures. Developed strong problem-solving skills through low-level programming, memory management, and algorithm design. Gained hands-on experience in peer-to-peer learning, teamwork, version control, debugging, and best coding practices, working on real-world projects in a collaborative environment."
-          >
-            <></>
-          </Card>
-          <Card
-            date="2020 - 2022"
-            title="ISGI KHOURIBGA"
-            description="Studied software development with a focus on programming, systems administration, and database management. Gained practical experience in designing and developing applications, managing IT infrastructure, and solving technical problems. The program emphasized hands-on projects, coding best practices, and collaboration in software development, preparing for real-world challenges in the IT industry."
-          >
-            <></>
-          </Card>
-          <div className="my_projects pt-10">
+          <div id="experience_section">
+            <Card
+              date="2023 - PRESENT"
+              title="1337 Common Core (42 Network)"
+              description="An intensive, project-based computer science curriculum focused on C programming, algorithms, and data structures. Developed strong problem-solving skills through low-level programming, memory management, and algorithm design. Gained hands-on experience in peer-to-peer learning, teamwork, version control, debugging, and best coding practices, working on real-world projects in a collaborative environment."
+            >
+              {" "}
+              <></>
+            </Card>
+            <Card
+              date="2020 - 2022"
+              title="ISGI KHOURIBGA"
+              description="Studied software development with a focus on programming, systems administration, and database management. Gained practical experience in designing and developing applications, managing IT infrastructure, and solving technical problems. The program emphasized hands-on projects, coding best practices, and collaboration in software development, preparing for real-world challenges in the IT industry."
+            >
+              {" "}
+              <></>
+            </Card>
+          </div>
+          <div id="projects_section" className="pt-10">
             <Card
               date=""
               title="FT_TRANSCENDENCE"
               description="Developed a full-stack web app with real-time multiplayer games, chat system, and secure user authentication with 2FA using modern technologies like React, WebSockets, and JWT."
             >
-              <Tag language="JavaScipte" />
+              <Tag language="JavaScript" />
               <Tag language="React" />
-              <Tag language="TailWind" />
+              <Tag language="Tailwind" />
               <Tag language="Python" />
               <Tag language="Django" />
               <Tag language="Docker" />
@@ -111,25 +173,23 @@ function App() {
             <Card
               date=""
               title="FT_IRC"
-              description="Studied software development with a focus on programming, systems administration, and database management. Gained practical experience in designing and developing applications, managing IT infrastructure, and solving technical problems. The program emphasized hands-on projects, coding best practices, and collaboration in software development, preparing for real-world challenges in the IT industry."
+              description="Developed a project with a focus on systems administration, programming, and problem-solving in C++."
             >
-              <Tag language="C++"></Tag>
+              <Tag language="C++" />
             </Card>
-
             <Card
               date=""
               title="INCEPTION"
-              description="This project involves creating three containers using Docker to run a fully containerized web server environment. This setup includes an Nginx container for the web server, a WordPress container for the CMS, and a MariaDB container for the database. Each component operates in isolation, enhancing security, scalability, and management efficiency."
+              description="Created three containers using Docker to run a fully containerized web server environment."
             >
-              <Tag language="Docker"></Tag>
+              <Tag language="Docker" />
             </Card>
-
             <Card
               date=""
               title="MINISHELL"
-              description="This C project aims to create a simple shell program, providing a command-line interface for users to execute commands and manage processes."
+              description="A simple shell program providing a command-line interface to execute commands and manage processes."
             >
-              <Tag language="C"></Tag>
+              <Tag language="C" />
             </Card>
           </div>
         </div>

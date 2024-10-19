@@ -22,7 +22,7 @@ const Card: React.FC<CardProps> = ({ date, title, description, children }) => {
         </div>
         <div className=" text-xs card_info flex flex-col" style={{ flex: 3 }}>
           <div className="tit_card text-white font-normal">{title}</div>
-          <div className="text-xs desc_card my-5">{description}</div>
+          <div className="text-sm desc_card my-5">{description}</div>
           <div className="languages flex">{children}</div>
         </div>
       </div>
