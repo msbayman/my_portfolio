@@ -133,10 +133,19 @@ function App() {
               Back in my days at 42 School, I dove deep into the world of coding
               by working on various projects that spanned across C, C++, Docker,
               Git, Bash, and Python. I later expanded my skills into{" "}
-              <span className="text-orange">JavaScript</span>, and{" "}
-              <span className="text-orange">Typescript</span>, with a heavy
-              focus on React. As a passionate frontend developer, I strive to
-              create seamless user experiences with clean, maintainable code.
+              <span className="white_span"> web development</span>, mastering
+              Django for backend work and React for the frontend.
+            </p>
+            <br />
+            <p>
+              Fast-forward to today, and I'm passionate about building clean,
+              responsive, and accessible user interfaces. My primary focus is
+              <span className="white_span"> frontend development</span>, where I
+              love bridging the gap between design and functionality to create
+              seamless user experiences. Whether it's
+              <span className="white_span"> using React, TypeScript </span>, or
+              other cutting-edge technologies, I'm dedicated to writing clean,
+              scalable code that performs as well as it looks.
             </p>
           </div>
           <div id="experience_section">
