@@ -6,52 +6,79 @@ import "./App.css";
 function App() {
   const [activeSection, setActiveSection] = useState("");
 
-  // Handle scroll to detect which section is in view
   const handleScroll = () => {
     const sections = [
       "about_section",
       "experience_section",
       "projects_section",
     ];
-    const scrollPosition = window.scrollY;
 
-    sections.forEach((sectionId) => {
-      const section = document.getElementById(sectionId);
+    const container = document.querySelector(".box_right") as HTMLElement; // Target the scrollable container
+    if (container) {
+      const scrollPosition = container.scrollTop; // Get the scroll position of .box_right
+      const containerHeight = container.clientHeight; // Height of the container
+      const scrollableHeight = container.scrollHeight; // Total height of scrollable content
 
-      if (section) {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+      // Check if we're at the bottom of the container
+      const isAtBottom = scrollPosition + containerHeight >= scrollableHeight;
 
-        // Check if the scroll position is within the bounds of the section
-        if (
-          scrollPosition >= sectionTop - 200 && // Adjust for earlier detection
-          scrollPosition < sectionTop + sectionHeight
-        ) {
-          if (activeSection !== sectionId) {
-            setActiveSection(sectionId); // Update active section
-          }
+      if (isAtBottom) {
+        // If we're at the bottom, set the active section to "projects_section"
+        if (activeSection !== "projects_section") {
+          setActiveSection("projects_section");
         }
-      }
-    });
-  };
+      } else {
+        // Handle section highlighting as before
+        sections.forEach((sectionId) => {
+          const section = document.getElementById(sectionId) as HTMLElement;
+          if (section) {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
 
-  const handleLinkClick = (sectionId: string) => {
-    setActiveSection(sectionId);
-    // Optionally, scroll the page to the section
-    const section = document.getElementById(sectionId);
-    if (section) {
-      window.scrollTo({
-        top: section.offsetTop,
-        behavior: "smooth", // Smooth scroll to the section
-      });
+            // Check if the scroll position is within the bounds of the section
+            if (
+              scrollPosition >= sectionTop &&
+              scrollPosition < sectionTop + sectionHeight
+            ) {
+              if (activeSection !== sectionId) {
+                setActiveSection(sectionId); // Update active section
+              }
+            }
+          }
+        });
+      }
     }
   };
 
 
+  const handleLinkClick = (sectionId: string) => {
+    const section = document.getElementById(sectionId) as HTMLElement;
+    const container = document.querySelector(".box_right") as HTMLElement; // The scrollable container
+
+    if (section && container) {
+      const sectionTop = section.offsetTop - container.offsetTop - 200; // Relative to container
+
+      // Scroll directly to the section
+      container.scrollTo({
+        top: sectionTop, // No need to subtract containerScrollTop
+        behavior: "smooth",
+      });
+    }
+
+    if (activeSection !== sectionId) setActiveSection(sectionId);
+  };
+
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeSection]); // Re-run if activeSection changes
+    const container = document.querySelector(".box_right");
+
+    if (container) {
+      container.addEventListener("scroll", handleScroll); // Attach scroll to box_right
+
+      return () => {
+        container.removeEventListener("scroll", handleScroll); // Cleanup listener
+      };
+    }
+  }, [activeSection]);
 
   return (
     <div className="main_page p">
@@ -67,10 +94,7 @@ function App() {
               </div>
             </div>
             <div className="nav_page h-28 mt-14 flex flex-col justify-between">
-              <a
-                href="#about_section"
-                onClick={() => handleLinkClick("about_section")}
-              >
+              <a onClick={() => handleLinkClick("about_section")}>
                 <div
                   className={`path_nav flex items-center ${activeSection === "about_section" ? "active" : ""}`}
                 >
@@ -78,10 +102,7 @@ function App() {
                   <div className="path">About</div>
                 </div>
               </a>
-              <a
-                href="#experience_section"
-                onClick={() => handleLinkClick("experience_section")}
-              >
+              <a onClick={() => handleLinkClick("experience_section")}>
                 <div
                   className={`path_nav flex items-center ${activeSection === "experience_section" ? "active" : ""}`}
                 >
@@ -89,10 +110,7 @@ function App() {
                   <div className="path">Experience</div>
                 </div>
               </a>
-              <a
-                href="#projects_section"
-                onClick={() => handleLinkClick("projects_section")}
-              >
+              <a onClick={() => handleLinkClick("projects_section")}>
                 <div
                   className={`path_nav flex items-center ${activeSection === "projects_section" ? "active" : ""}`}
                 >
