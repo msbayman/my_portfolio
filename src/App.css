@@ -39,8 +39,6 @@
   width: 4rem;
 }
 
-
-
 .path_nav.active .path {
   color: #e2e8f0;
   width: 4rem;
@@ -53,7 +51,6 @@
 
 .path_nav:hover .path {
   color: #e2e8f0;
-  
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -81,13 +78,32 @@
 }
 
 @media (max-width: 1024px) {
-  .box_left, .box_right {
+  .box_left,
+  .box_right {
     width: 100%;
     padding: 1rem;
   }
 
+  /* .mid_box {
+    flex-direction: column;
+    height: auto; 
+  }*/
+}
+
+@media (max-width: 768px) {
   .mid_box {
     flex-direction: column;
     height: auto;
+  }
+ .mid_box .nav_page  {
+    display: none;
+  }
+  .introduce
+  {
+    text-align: center;
+  }
+  .mid_box
+  {
+    margin: 0 1rem;
   }
 }
