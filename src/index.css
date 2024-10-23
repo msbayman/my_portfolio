@@ -13,6 +13,10 @@
   scroll-behavior: smooth;
   font-weight: 200;
 }
+body
+{
+  background-color: #0f172a;
+}
 
 ::selection {
   background-color: #53d3d5;
