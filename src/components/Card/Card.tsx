@@ -1,9 +1,5 @@
-// Card.tsx
 import './Card.css';
 
-interface TagProps {
-  children: string; 
-}
 
 interface CardProps {
   date: string;         
