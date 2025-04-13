@@ -90,7 +90,7 @@ function App() {
                 Msaoub Ayman
               </div>
               <div className="text-xl mt-4 text-white font-normal">
-                Frontend Developer
+                full-stack Developer
               </div>
             </div>
             <div className="nav_page h-28 mt-14 flex flex-col justify-between">
@@ -153,22 +153,26 @@ function App() {
         <div className="box_right overflow-auto scrollbar-hide py-28">
           <div id="about_section" className="pb-20">
             <p>
-              Back in my days at 42 School, I dove deep into the world of coding
-              by working on various projects that spanned across C, C++, Docker,
-              Git, Bash, and Python. I later expanded my skills into{" "}
-              <span className="white_span"> web development</span>, mastering
-              Django for backend work and React for the frontend.
+              My path in the technology sector began with practical projects in
+              <span className="white_span"> C, C++, Bash, Git, and Docker</span>,
+              which enabled me to build a solid problem-solving and low-level
+              programming base. I then shifted to
+              <span className="white_span"> full-stack</span> web development, in
+              which I excelled at Django for backend development and React with
+              TypeScript for frontend development.
             </p>
             <br />
             <p>
-              Fast-forward to today, and I'm passionate about building clean,
-              responsive, and accessible user interfaces. My primary focus is
-              <span className="white_span"> frontend development</span>, where I
-              love bridging the gap between design and functionality to create
-              seamless user experiences. Whether it's
-              <span className="white_span"> using React, TypeScript </span>, or
-              other cutting-edge technologies, I'm dedicated to writing clean,
-              scalable code that performs as well as it looks.
+              enjoy developing clean, responsive, and accessible web
+              applications from the ground up. Whether I'm making scalable APIs
+              with <span className="white_span">Django</span> or developing
+              intricate user interfaces with{" "}
+              <span className="white_span">React</span>, I take great joy in
+              turning ideas into functional, beautiful code. As a{" "}
+              <span className="white_span">full-stack</span> developer, I excel
+              at bridging backend logic and frontend experience, always keeping
+              performance, clean architecture, and seamless user interaction top
+              of mind.
             </p>
           </div>
           <div id="experience_section">
