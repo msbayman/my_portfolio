@@ -1,5 +1,4 @@
 // Card.tsx
-import React from 'react';
 import './Card.css';
 
 interface TagProps {
